@@ -22,6 +22,9 @@ class TodoPage:
 
     def open(self) -> None:
         self.page.goto(self.base_url, wait_until="domcontentloaded")
+        self.wait_for_loaded()
+
+    def wait_for_loaded(self) -> None:
         expect(self.input).to_be_visible()
 
     def add_todo(self, text: str) -> None:

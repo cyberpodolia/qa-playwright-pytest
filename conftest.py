@@ -10,6 +10,7 @@ from playwright.sync_api import Browser, Page, sync_playwright
 
 from config import get_settings
 from metrics import write_metrics
+from pages.todo_page import TodoPage
 from qa_logging import setup_logging
 
 _session_start: float | None = None
@@ -49,6 +50,14 @@ def page(browser: Browser) -> Generator[Page, None, None]:
     page = context.new_page()
     yield page
     context.close()
+
+
+@pytest.fixture
+def todo_page(page: Page) -> TodoPage:
+    settings = get_settings()
+    todo = TodoPage(page, settings.base_url)
+    todo.open()
+    return todo
 
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
