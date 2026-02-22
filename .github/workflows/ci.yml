@@ -32,7 +32,7 @@ jobs:
             -p no:debugging \
             --browser=chromium \
             --headless \
-            --trace=on-failure \
+            --pw-trace=on-failure \
             --video=on-failure \
             --screenshot=on-failure \
             --artifacts-dir=artifacts \
