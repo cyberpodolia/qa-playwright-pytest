@@ -9,7 +9,7 @@ description = "Small Playwright + pytest UI automation suite"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
-authors = [{name = "Your Name"}]
+authors = [{name = "QA Automation Team"}]
 dependencies = [
   "playwright>=1.41.0",
   "pytest>=7.4.0",
@@ -37,6 +37,10 @@ quote-style = "double"
 indent-style = "space"
 
 [tool.pytest.ini_options]
-addopts = "-q"
+addopts = "-q --strict-markers"
 testpaths = ["tests"]
+markers = [
+  "smoke: critical path UI tests",
+  "regression: broader functional UI coverage",
+]
 
